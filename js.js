@@ -51,4 +51,5 @@ button.addEventListener('click', generate = () => {
 
 });
 
-//version1
+//version2 je ne comprend pas pourquoi ça marche pas
+
