@@ -51,5 +51,5 @@ button.addEventListener('click', generate = () => {
 
 });
 
-//version2
+//version2.0
 
