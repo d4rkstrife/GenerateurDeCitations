@@ -1,8 +1,8 @@
 // Différentes parties de phrase.
 const data = {
-    finPhrase: ["il ne faut jamais", "pourquoi", "on peut toujours", "il faut être prêt à", "on adore", "on préfère éviter de"],
+    finPhrase: ["il ne faut jamais.", "on peut toujours.", "il faut être prêt à.", "on adore.", "on préfère éviter de."],
     debutPhrase: ["Tuer un ours", "Courir après une pierre", "Lacher une caisse", "S'endormir", "Marcher à pieds joints"],
-    milieuPhrase: ["quand on court.", "face au vent.", "quand on a bu.", "à l'aveugle.", "par inadvertance.", "quand on ne s'y attend pas.", "sans le vouloir.", "sans faire attention."]
+    milieuPhrase: ["quand on court", "face au vent", "quand on a bu", "à l'aveugle", "par inadvertance", "quand on ne s'y attend pas", "sans le vouloir", "sans faire attention"]
 }
 //Chiffre aléatoire pour choisir la phrase
 let chiffreAleatoire = (max) => {
