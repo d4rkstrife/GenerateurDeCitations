@@ -1,14 +1,17 @@
 // Différentes parties de phrase.
 const data = {
-    debutPhrase: ["Il ne faut jamais", "Pourquoi", "On peut toujours", "Il faut être prêt à", "On adore", "On préfère éviter de"],
-    milieuPhrase: ["tuer un ours", "courir après une pierre", "lacher une caisse", "s'endormir", "marcher à pieds joints"],
-    finPhrase: ["quand on court.", "face au vent.", "quand on a bu.", "à l'aveugle.", "par inadvertance.", "quand on ne s'y attend pas.", "sans le vouloir.", "sans faire attention."]
+    debutPhrase1: ["Il ne faut jamais", "Pourquoi", "On peut toujours", "Il faut être prêt à", "On adore", "On préfère éviter de"],
+    milieuPhrase1: ["tuer un ours", "courir après une pierre", "lacher une caisse", "s'endormir", "marcher à pieds joints"],
+    finPhrase1: ["quand on court.", "face au vent.", "quand on a bu.", "à l'aveugle.", "par inadvertance.", "quand on ne s'y attend pas.", "sans le vouloir.", "sans faire attention."],
+    debutPhrase2: ["Tintin", "Le capitaine Haddock", "Titeuf", "Asterix", "Lucky Luke"],
+    milieuPhrase2: ["court après", "mange", "tape sur", "tire plus vite qu'", "crie sur"],
+    finPhrase2: ["un sanglier.", "une banane.", "un romain.", "un poisson."]
 }
 //Chiffre aléatoire pour choisir la phrase
 let chiffreAleatoire = (max) => {
     return Math.floor(Math.random() * Math.floor(max))
 }
-// Bouton Reset
+// Fonction Reset
 let resetButton = document.getElementById("reset");
 
 let reset = () => {
@@ -16,6 +19,10 @@ let reset = () => {
     while (elt.firstChild) {
         elt.removeChild(elt.firstChild);
     }
+    button.style.display = "inline-block";
+    button.textContent = "Générer";
+    button2.style.display = "inline-block";
+    button2.textContent = "Dessin animé";
 };
 resetButton.addEventListener('click', reset);
 
@@ -39,19 +46,43 @@ button.addEventListener('click', generate = () => {
     reset(); //On efface les anciennes phrases si il y en a.
     //On boucle grace a la valeur du Select
     for (let i = 0; i < x; i++) {
-        let phrase = new Phrase(data.debutPhrase[chiffreAleatoire(data.debutPhrase.length)],
-            data.milieuPhrase[chiffreAleatoire(data.milieuPhrase.length)],
-            data.finPhrase[chiffreAleatoire(data.finPhrase.length)]);//La phrase est créée
+        let phrase = new Phrase(data.debutPhrase1[chiffreAleatoire(data.debutPhrase1.length)],
+            data.milieuPhrase1[chiffreAleatoire(data.milieuPhrase1.length)],
+            data.finPhrase1[chiffreAleatoire(data.finPhrase1.length)]);//La phrase est créée
 
         const newElt = document.createElement("p");
         let elt = document.getElementById("citation-container");
-        elt.appendChild(newElt);
-        newElt.textContent = phrase.fairePhrase();//Le nouvel element est rajouté à la div
+        elt.appendChild(newElt);//Le nouvel element est rajouté à la div
+        newElt.textContent = phrase.fairePhrase();//on lui donne la vleur de la phrase créée.
+        newElt.className = "citation";
     }
+    button2.style.display = "none";
+    button.textContent = "Continuer";
 
 });
 
-//version1
+let button2 = document.getElementById("button2");
+button2.addEventListener('click', generate = () => {
+    //On recupère la valeur du Select pour definir le nombre de phrase a écrire
+    let x = document.getElementById("number").value;
+    reset(); //On efface les anciennes phrases si il y en a.
+    //On boucle grace a la valeur du Select
+    for (let i = 0; i < x; i++) {
+        let phrase = new Phrase(data.debutPhrase2[chiffreAleatoire(data.debutPhrase2.length)],
+            data.milieuPhrase2[chiffreAleatoire(data.milieuPhrase2.length)],
+            data.finPhrase2[chiffreAleatoire(data.finPhrase2.length)]);//La phrase est créée
 
-//version2.0
+        const newElt = document.createElement("p");
+        let elt = document.getElementById("citation-container");
+        elt.appendChild(newElt);//Le nouvel element est rajouté à la div
+        newElt.textContent = phrase.fairePhrase();//on lui donne la vleur de la phrase créée.
+        newElt.className = "citation";
+
+    }
+    button.style.display = "none";
+    button2.textContent = "Continuer";
+
+});
+
+//version2.1
 
