@@ -34,21 +34,15 @@ class Phrase {
 // Bouton qui génère la phrase
 let button = document.getElementById("button");
 button.addEventListener('click', generate = () => {
-    //On recupère la valeur du Select pour definir le nombre de phrase a écrire
-    let x = document.getElementById("number").value;
     reset(); //On efface les anciennes phrases si il y en a.
-    //On boucle grace a la valeur du Select
-    for (let i = 0; i < x; i++) {
-        let phrase = new Phrase(data.debutPhrase[chiffreAleatoire(data.debutPhrase.length)],
-            data.milieuPhrase[chiffreAleatoire(data.milieuPhrase.length)],
-            data.finPhrase[chiffreAleatoire(data.finPhrase.length)]);//La phrase est créée
+    let phrase = new Phrase(data.debutPhrase[chiffreAleatoire(data.debutPhrase.length)],
+        data.milieuPhrase[chiffreAleatoire(data.milieuPhrase.length)],
+        data.finPhrase[chiffreAleatoire(data.finPhrase.length)]);//La phrase est créée
 
-        const newElt = document.createElement("p");
-        let elt = document.getElementById("citation-container");
-        elt.appendChild(newElt);
-        newElt.textContent = phrase.fairePhrase();//Le nouvel element est rajouté à la div
-    }
-
+    const newElt = document.createElement("p");
+    let elt = document.getElementById("citation-container");
+    elt.appendChild(newElt);
+    newElt.textContent = phrase.fairePhrase();//Le nouvel element est rajouté à la div
 });
 
 //version1
