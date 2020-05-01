@@ -45,4 +45,4 @@ button.addEventListener('click', generate = () => {
     newElt.textContent = phrase.fairePhrase();//Le nouvel element est rajouté à la div
 });
 
-//version1
+//version 1 finale
