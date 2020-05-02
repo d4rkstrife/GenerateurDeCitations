@@ -1,8 +1,8 @@
 // Différentes parties de phrase.
 const data = {
-    debutPhrase1: ["Il ne faut jamais", "Pourquoi", "On peut toujours", "Il faut être prêt à", "On adore", "On préfère éviter de"],
-    milieuPhrase1: ["tuer un ours", "courir après une pierre", "lacher une caisse", "s'endormir", "marcher à pieds joints"],
-    finPhrase1: ["quand on court.", "face au vent.", "quand on a bu.", "à l'aveugle.", "par inadvertance.", "quand on ne s'y attend pas.", "sans le vouloir.", "sans faire attention."],
+    debutPhrase1: ["Il ne faut jamais", "Il ne faut pas s'interdire de", "On peut toujours", "Il faut être prêt à", "Il est préférable de", "On préfèrera toujours"],
+    milieuPhrase1: ["tuer un ours", "courir après une pierre", "lacher une caisse", "s'endormir", "marcher à cloche pieds"],
+    finPhrase1: ["quand on court.", "face au vent.", "quand on a bu.", "à l'aveugle.", "par inadvertance.", "quand on ne s'y attend pas.", "sans le vouloir.", "sans faire attention.", "même si ce n'est pas facile.", "même si il y a des conséquences."],
     debutPhrase2: ["Tintin", "Le capitaine Haddock", "Titeuf", "Asterix", "Lucky Luke"],
     milieuPhrase2: ["court après", "mange", "tape sur", "tire plus vite qu'", "crie sur"],
     finPhrase2: ["un sanglier.", "une banane.", "un romain.", "un poisson."]
@@ -19,8 +19,9 @@ let reset = () => {
     while (elt.firstChild) {
         elt.removeChild(elt.firstChild);
     }
+    //raz des boutons
     button.style.display = "inline-block";
-    button.textContent = "Générer";
+    button.textContent = "Version normale";
     button2.style.display = "inline-block";
     button2.textContent = "Dessin animé";
 };
@@ -56,6 +57,7 @@ button.addEventListener('click', generate = () => {
         newElt.textContent = phrase.fairePhrase();//on lui donne la vleur de la phrase créée.
         newElt.className = "citation";
     }
+    //mise à jour des boutons
     button2.style.display = "none";
     button.textContent = "Continuer";
 
@@ -79,6 +81,7 @@ button2.addEventListener('click', generate = () => {
         newElt.className = "citation";
 
     }
+    //mise à jour des boutons
     button.style.display = "none";
     button2.textContent = "Continuer";
 
