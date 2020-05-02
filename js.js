@@ -6,11 +6,11 @@ const data = {
 }
 //Chiffre aléatoire pour choisir la phrase
 let chiffreAleatoire = (max) => {
-    return Math.floor(Math.random() * Math.floor(max))
+    return Math.floor(Math.random() * max)
 }
 // Bouton Reset
 let resetButton = document.getElementById("reset");
-
+//fonction reset
 let reset = () => {
     let elt = document.getElementById("citation-container");
     while (elt.firstChild) {
@@ -32,15 +32,15 @@ class Phrase {
 }
 
 // Bouton qui génère la phrase
-let button = document.getElementById("button");
+const button = document.getElementById("button");
 button.addEventListener('click', generate = () => {
     reset(); //On efface les anciennes phrases si il y en a.
-    let phrase = new Phrase(data.debutPhrase[chiffreAleatoire(data.debutPhrase.length)],
+    const phrase = new Phrase(data.debutPhrase[chiffreAleatoire(data.debutPhrase.length)],
         data.milieuPhrase[chiffreAleatoire(data.milieuPhrase.length)],
         data.finPhrase[chiffreAleatoire(data.finPhrase.length)]);//La phrase est créée
 
     const newElt = document.createElement("p");
-    let elt = document.getElementById("citation-container");
+    const elt = document.getElementById("citation-container");
     elt.appendChild(newElt);
     newElt.textContent = phrase.fairePhrase();//Le nouvel element est rajouté à la div
 });
