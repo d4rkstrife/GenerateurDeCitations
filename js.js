@@ -5,15 +5,16 @@ const data = {
     finPhrase1: ["quand on court.", "face au vent.", "quand on a bu.", "à l'aveugle.", "par inadvertance.", "quand on ne s'y attend pas.", "sans le vouloir.", "sans faire attention.", "même si ce n'est pas facile.", "même si il y a des conséquences."],
     debutPhrase2: ["Tintin", "Le capitaine Haddock", "Titeuf", "Asterix", "Lucky Luke"],
     milieuPhrase2: ["court après", "mange", "tape sur", "tire plus vite qu'", "crie sur"],
-    finPhrase2: ["un sanglier.", "une banane.", "un romain.", "un poisson."]
+    finPhrase2: ["un sanglier.", "une banane.", "un romain.", "un poisson.", "une ombre.", "un nuage.", "un menhir."]
 }
 //Chiffre aléatoire pour choisir la phrase
-let chiffreAleatoire = (max) => {
-    return Math.floor(Math.random() * Math.floor(max))
-}
-// Fonction Reset
-let resetButton = document.getElementById("reset");
+const chiffreAleatoire = (max) => {
+    return Math.floor(Math.random() * max)
+};
 
+const resetButton = document.getElementById("reset");
+const consigne = document.getElementById("consigne");
+// Fonction Reset
 let reset = () => {
     let elt = document.getElementById("citation-container");
     while (elt.firstChild) {
@@ -24,7 +25,9 @@ let reset = () => {
     button.textContent = "Version normale";
     button2.style.display = "inline-block";
     button2.textContent = "Dessin animé";
+    consigne.textContent = "Cliquez pour générer votre citation. Choisissez entre la citation normale ou la version dessin animé.";
 };
+
 resetButton.addEventListener('click', reset);
 
 // Class Phrase et son constructor
@@ -39,7 +42,7 @@ class Phrase {
     }
 }
 
-// Bouton qui génère la phrase
+// Bouton qui génère la phrase 1
 let button = document.getElementById("button");
 button.addEventListener('click', generate = () => {
     //On recupère la valeur du Select pour definir le nombre de phrase a écrire
@@ -57,12 +60,14 @@ button.addEventListener('click', generate = () => {
         newElt.textContent = phrase.fairePhrase();//on lui donne la vleur de la phrase créée.
         newElt.className = "citation";
     }
-    //mise à jour des boutons
+    //mise à jour des boutons et de la consigne
     button2.style.display = "none";
     button.textContent = "Continuer";
+    consigne.textContent = "Version normale";
 
 });
 
+// Bouton qui génère la phrase 2
 let button2 = document.getElementById("button2");
 button2.addEventListener('click', generate = () => {
     //On recupère la valeur du Select pour definir le nombre de phrase a écrire
@@ -84,8 +89,9 @@ button2.addEventListener('click', generate = () => {
     //mise à jour des boutons
     button.style.display = "none";
     button2.textContent = "Continuer";
+    consigne.textContent = "Version dessin animé";
 
 });
 
-//version2.1
+//version2.2
 
