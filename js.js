@@ -8,8 +8,6 @@ const data = {
 let chiffreAleatoire = (max) => {
     return Math.floor(Math.random() * max)
 }
-// Bouton Reset
-let resetButton = document.getElementById("reset");
 //fonction reset
 let reset = () => {
     let elt = document.getElementById("citation-container");
@@ -17,7 +15,6 @@ let reset = () => {
         elt.removeChild(elt.firstChild);
     }
 };
-resetButton.addEventListener('click', reset);
 
 // Class Phrase et son constructor
 class Phrase {
