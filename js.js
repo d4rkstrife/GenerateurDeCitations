@@ -38,7 +38,7 @@ class Phrase {
         this.finPhrase = finPhrase;
     }
     fairePhrase = () => {
-        return `${this.debutPhrase} ${this.milieuPhrase} ${this.finPhrase}`
+        return `"${this.debutPhrase} ${this.milieuPhrase} ${this.finPhrase}"`
     }
 }
 
