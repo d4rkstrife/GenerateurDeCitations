@@ -1,9 +1,10 @@
 class Citation {
-    constructor(data, idButton, idElt, typeCitation, nbrCitation) {
-        this.debutPhrase = data.debutPhrase;
-        this.milieuPhrase = data.milieuPhrase;
-        this.finPhrase = data.finPhrase;
+    constructor(data, idButton, idElt, idCitation) {
+        this.data = data;
+
+        //  this.nbrCitation = document.querySelector('input[name = "nombre"]:checked');
         this.elt = document.getElementById(idElt);
+        this.typeCitation = document.getElementById(idCitation);
         const button = document.getElementById(idButton);
         button.addEventListener('click', () => {
             this.generer();
@@ -13,12 +14,26 @@ class Citation {
         return Math.floor(Math.random() * max)
     }
     generer() {
-        let phrase = `${this.selectionAleatoire(this.debutPhrase)} ${this.selectionAleatoire(this.milieuPhrase)} ${this.selectionAleatoire(this.finPhrase)}`
+        let phrase = `${this.selAlea(this.selType())}`
         this.elt.textContent = phrase;
     }
     selectionAleatoire(partiePhrase) {
         return partiePhrase[this.chiffreAleatoire(partiePhrase.length)];
     }
+    selAlea(type) {
+        return type.debutPhrase[this.chiffreAleatoire(type.debutPhrase.length)] + " " + type.milieuPhrase[this.chiffreAleatoire(type.milieuPhrase.length)] + " " + type.finPhrase[this.chiffreAleatoire(type.finPhrase.length)];
+    }
+    selType() {
+        let x = this.typeCitation.value;
+        if (x === "phrase1") {
+            return this.data.phrase1;
+        } else {
+            return this.data.phrase2;
+        }
+
+    }
+
+
 }
 const data = {
     phrase1: {
@@ -32,4 +47,4 @@ const data = {
         finPhrase: ["un sanglier.", "une banane.", "un romain.", "un poisson.", "une ombre.", "un nuage.", "un menhir."]
     }
 };
-let citation = new Citation(data, "button", "citation-container");
+let citation = new Citation(data, "button", "citation-container", "type");
