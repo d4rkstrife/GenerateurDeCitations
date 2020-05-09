@@ -1,8 +1,8 @@
 class Citation {
-    constructor(data, idButton, idElt, idCitation) {
+    constructor(data, idButton, idElt, idCitation, idNombre) {
         this.data = data;
-
-        //  this.nbrCitation = document.querySelector('input[name = "nombre"]:checked');
+        this.radio = document.getElementsByName(idNombre);
+        this.nbrCitation;
         this.elt = document.getElementById(idElt);
         this.typeCitation = document.getElementById(idCitation);
         const button = document.getElementById(idButton);
@@ -14,25 +14,39 @@ class Citation {
         return Math.floor(Math.random() * max)
     }
     generer() {
-        let phrase = `${this.selAlea(this.selType())}`
-        this.elt.textContent = phrase;
-    }
-    selectionAleatoire(partiePhrase) {
-        return partiePhrase[this.chiffreAleatoire(partiePhrase.length)];
+        this.reset();
+        for (let i = 0; i < this.choixNbr(); i++) {
+            let phrase = `${this.selAlea(this.selType())}`
+            this.creerElt(phrase)
+        }
+        console.log(this.choixNbr())
     }
     selAlea(type) {
         return type.debutPhrase[this.chiffreAleatoire(type.debutPhrase.length)] + " " + type.milieuPhrase[this.chiffreAleatoire(type.milieuPhrase.length)] + " " + type.finPhrase[this.chiffreAleatoire(type.finPhrase.length)];
     }
     selType() {
-        let x = this.typeCitation.value;
-        if (x === "phrase1") {
-            return this.data.phrase1;
-        } else {
-            return this.data.phrase2;
-        }
-
+        let x = eval("this.data." + this.typeCitation.value);
+        return x
     }
-
+    choixNbr() {
+        for (var i = 0; i < this.radio.length; i++) {
+            if (this.radio[i].checked) {
+                this.nbrCitation = this.radio[i].value;
+            }
+        }
+        return this.nbrCitation
+    }
+    creerElt(phrase) {
+        let newElt = document.createElement("p");
+        newElt.className = "citation";
+        this.elt.appendChild(newElt);
+        newElt.textContent = phrase;
+    }
+    reset() {
+        while (this.elt.firstChild) {
+            this.elt.removeChild(this.elt.firstChild);
+        }
+    }
 
 }
 const data = {
@@ -47,4 +61,4 @@ const data = {
         finPhrase: ["un sanglier.", "une banane.", "un romain.", "un poisson.", "une ombre.", "un nuage.", "un menhir."]
     }
 };
-let citation = new Citation(data, "button", "citation-container", "type");
+let citation = new Citation(data, "button", "citation-container", "type", "nombre");
