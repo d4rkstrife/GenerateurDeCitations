@@ -13,3 +13,4 @@ const data = [
 const citation = new Citation(data)
 const app = new App(data, "button", "citation-container", "type", "nombre", citation);
 
+app.run();

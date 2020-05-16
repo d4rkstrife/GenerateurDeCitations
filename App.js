@@ -6,17 +6,17 @@ class App {
         this.nbrCitation;
         this.elt = document.getElementById(idElt);
         this.typeCitation = document.getElementById(idCitation);
-        const button = document.getElementById(idButton);
-        button.addEventListener('click', () => {
-            this.run();
-        });
+        this.button = document.getElementById(idButton);
     }
     run() {
-        this.reset();
+        this.button.addEventListener('click', () => {
+            this.reset();
 
-        for (let i = 0; i < this.choixNbr(); i++) { // boucle sur le nombre choisi
-            this.creerElt(this.citation.construPhrase(this.selType()));
-        }
+            for (let i = 0; i < this.choixNbr(); i++) { // boucle sur le nombre choisi
+                this.creerElt(this.citation.construPhrase(this.selType()));
+            }
+        });
+
     }
     choixNbr() {    //fonction qui récupère le nombre de citations à afficher
         this.nbrCitation = document.querySelector('input[name=nombre]:checked').value;
