@@ -4,20 +4,18 @@ class Citation {
     }
 
     chiffreAleatoire(max) {             //fonction qui crée un chiffre aléatoire
-        return Math.floor(Math.random() * max)
+        return Math.floor(Math.random() * max);
     }
 
     construPhrase(nombre) {
         //    fonction qui met la phrase bout à bout
-        let dataPhrase = this.data[nombre];
-        let nbrPartPhrase = dataPhrase.length; // récupère le nbr de bout de phras qui existe
+        const dataPhrase = this.data[nombre];
         let phrase = "";
 
-        for (let i = 0; i < nbrPartPhrase; i++) { //boucle qui assemble les bouts de phrase.
-            phrase = phrase + " " + dataPhrase[i][this.chiffreAleatoire(dataPhrase[i].length)];
-
-        }
-        return phrase
+        dataPhrase.forEach(element => {
+            phrase = phrase + " " + element[this.chiffreAleatoire(element.length)];
+        })
+        return phrase;
 
     }
 }

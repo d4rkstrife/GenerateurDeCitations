@@ -11,6 +11,6 @@ const data = [
     ]
 ];
 const citation = new Citation(data)
-const app = new App(data, "button", "citation-container", "type", "nombre", citation);
+const app = new App("button", "citation-container", "type", citation);
 
 app.run();

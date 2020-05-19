@@ -1,12 +1,10 @@
 class App {
-    constructor(data, idButton, idElt, idCitation, idNombre, citation) {
-        this.data = data;
-        this.citation = citation
-        this.radio = document.getElementsByName(idNombre);
-        this.nbrCitation;
-        this.elt = document.getElementById(idElt);
-        this.typeCitation = document.getElementById(idCitation);
-        this.button = document.getElementById(idButton);
+    constructor(idGenerer, idDivContainer, idEltType, citation) {
+
+        this.citation = citation;
+        this.elt = document.getElementById(idDivContainer);
+        this.typeCitation = document.getElementById(idEltType);
+        this.button = document.getElementById(idGenerer);
     }
     run() {
         this.button.addEventListener('click', () => {
@@ -19,12 +17,12 @@ class App {
 
     }
     choixNbr() {    //fonction qui récupère le nombre de citations à afficher
-        this.nbrCitation = document.querySelector('input[name=nombre]:checked').value;
-        return this.nbrCitation
+        return document.querySelector('input[name=nombre]:checked').value;
+
     }
     selType() {     //fonction qui récupère le type de citations à afficher
-        let typePhrase = parseInt(this.typeCitation.value);
-        return typePhrase
+        return parseInt(this.typeCitation.value);
+
     }
     creerElt(phrase) {  //crée un element p dans la div choisie.
         let newElt = document.createElement("p");
